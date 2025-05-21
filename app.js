@@ -34,7 +34,8 @@ const sessionOptions = {
 };
 const corsOptions = {
     credentials: true,
-    origin: ["Domain that you are receiving the requests from: both with www and without www"]
+    origin: ['http://localhost:3000']
+    // origin: ["Domain that you are receiving the requests from: both with www and without www"]
 };
 
 app.use(express.json());

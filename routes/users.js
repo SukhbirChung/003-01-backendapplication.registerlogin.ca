@@ -1,6 +1,7 @@
 const express = require('express');
 const users = require('../controllers/users');
 const {sendEmail} = require('../middleware');
+const AppError = require('../errorHandling/AppError');
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.post('/deleteAccount', users.deleteAccount, (req, res) => {
     res.send("Account deleted successfully");
 });
 
-router.post('/isLoggedIn', (req, res)=>{
+router.post('/isLoggedIn', (req, res, next)=>{
     if (!req.isAuthenticated()) {
         return next(new AppError(401, "You must login first"));
     }
